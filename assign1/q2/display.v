@@ -86,7 +86,7 @@ module display(clk, sf_e, e, rs, rw, d, c, b, a);
         36: code <= 6'b100110; // a
         37: code <= 6'b100001;
 
-        38: code <= 6'b100101; // n
+        38: code <= 6'b100110; // n
         39: code <= 6'b101110;
 
         40: code <= 6'b100110; // i
@@ -107,7 +107,7 @@ module display(clk, sf_e, e, rs, rw, d, c, b, a);
         50: code <= 6'b100110; // o
         51: code <= 6'b101111;
 
-        52: code <= 6'b100101; // n
+        52: code <= 6'b100110; // n
         53: code <= 6'b101110;
 
         54: code <= 6'h21; // Table 5-3, Read Busy Flag and Address
