@@ -1,3 +1,4 @@
+`timescale 1ns / 10ps
 module counter
   (
    input wire [3:0] init,
@@ -20,7 +21,7 @@ module counter
         if (counter == 0)
           begin
              counter <= 50_000_000;
-             out <= out + 1;
+             out = out + 1;
           end
         else
           counter <= counter - 1;

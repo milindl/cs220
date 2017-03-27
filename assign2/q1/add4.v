@@ -5,7 +5,7 @@ module add4
 	 output wire       carry
    );
 
-	 wire [5:0]        t;
+	 wire [4:0]        t;
 	 assign t = a + b;
 	 assign sum = t[3:0];
 	 assign carry = t[4];
