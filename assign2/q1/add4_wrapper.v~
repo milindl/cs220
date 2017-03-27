@@ -13,103 +13,103 @@ module add4_wrapper
 
    reg              val1, val2;
 
-   reg [3:0]        a_prime = 4'b0000;
-	reg [3:0]       b_prime = 4'b0000;
+   reg [3:0]        a = 4'b0000;
+	 reg [3:0]        b = 4'b0000;
    wire [3:0]       sum;
    wire             carry;
 
    assign ledpin = carry;
 
-	 add4 add_unit (.a(a_prime), .b(b_prime), .sum(sum), .carry(carry));
+	 add4 add_unit (.a(a), .b(b), .sum(sum), .carry(carry));
 
    always @ (posedge clk)
      begin
 
         if (pb1 == 1)
-          a_prime = sw;
+          a = sw;
         if (pb2 == 1)
-          b_prime = sw;
+          b = sw;
 
         case (sum)
           0:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100000;
+               val1 = 6b'100011;
+               val2 = 6b'100000;
             end
           1:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100001;
+               val1 = 6b'100011;
+               val2 = 6b'100001;
             end
           2:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100010;
+               val1 = 6b'100011;
+               val2 = 6b'100010;
             end
           3:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100011;
+               val1 = 6b'100011;
+               val2 = 6b'100011;
             end
           4:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100100;
+               val1 = 6b'100011;
+               val2 = 6b'100100;
             end
           5:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100101;
+               val1 = 6b'100011;
+               val2 = 6b'100101;
             end
           6:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100110;
+               val1 = 6b'100011;
+               val2 = 6b'100110;
             end
           7:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100111;
+               val1 = 6b'100011;
+               val2 = 6b'100111;
             end
           8:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b101000;
+               val1 = 6b'100011;
+               val2 = 6b'101000;
             end
           9:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b101001;
+               val1 = 6b'100011;
+               val2 = 6b'101001;
             end
           10:
             begin
-               val1 = 6'b100100;
-               val2 = 6'b100001;
+               val1 = 6b'100100;
+               val2 = 6b'100001;
             end
           11:
             begin
-               val1 = 6'b100100;
-               val2 = 6'b100010;
+               val1 = 6b'100100;
+               val2 = 6b'100010;
             end
           12:
             begin
-               val1 = 6'b100100;
-               val2 = 6'b100011;
+               val1 = 6b'100100;
+               val2 = 6b'100011;
             end
           13:
             begin
-               val1 = 6'b100100;
-               val2 = 6'b100100;
+               val1 = 6b'100100;
+               val2 = 6b'100100;
             end
           14:
             begin
-               val1 = 6'b100011;
-               val2 = 6'b100101;
+               val1 = 6b'100011;
+               val2 = 6b'100101;
             end
           15:
             begin
-               val1 = 6'b100100;
-               val2 = 6'b100110;
+               val1 = 6b'100100;
+               val2 = 6b'100110;
             end
         endcase // case (sum)
 
