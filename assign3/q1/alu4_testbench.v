@@ -22,12 +22,12 @@ module alu4_testbench();
       in1 = $signed(7);
       in2 = $signed(7);
       #200;
-      $display("Result Carry Sign Zero: %d %d %d %d", out, CF, SF, ZF);
+      $display("Result Carry Sign Zero: %d %d %d %d", out[2:0], CF, SF, ZF);
       ctl = 3;
       in1 = $signed(2);
       in2 = $signed(3);
       #200;
-      $display("Result Carry Sign Zero: %d %d %d %d", out, CF, SF, ZF);
+      $display("Result Carry Sign Zero: %d %d %d %d", out[2:0], CF, SF, ZF);
       $stop;
    end // initial begin
 endmodule
