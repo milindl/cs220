@@ -18,7 +18,7 @@ module alu4_wrapper (
    reg [3:0] 			       A = 4'b0000;
    reg [3:0] 			       B = 4'b0000;
    reg [1:0] 			       C = 2'b00;
-   alu4 a_unit(C, A, B, result, zero_led, carry_led, sign_led);
+   alu4 a_unit(C, A, B, out, zero, carry, sign);
 
    always@(posedge clk) begin
       if (pb1 == 1)
@@ -45,6 +45,29 @@ module alu4_wrapper (
 	11: code <= 6'h01; // then 00 and lower nibble 0001
 	12:
 	  begin
+		if (C == 2'b10 || C == 2'b11)
+		begin
+	     case (result[2:0])
+	       0: code <= 6'b100011;
+	       1: code <= 6'b100011;
+	       2: code <= 6'b100011;
+               3: code <= 6'b100011;
+               4: code <= 6'b100011;
+               5: code <= 6'b100011;
+               6: code <= 6'b100011;
+               7: code <= 6'b100011;
+               8: code <= 6'b100011;
+               9: code <= 6'b100011;
+               10:code <= 6'b100100;
+               11:code <= 6'b100100;
+               12:code <= 6'b100100;
+               13:code <= 6'b100100;
+               14:code <= 6'b100100;
+               default: code <= 6'b100100;
+	     endcase
+		end
+		else
+		begin
 	     case (result)
 	       0: code <= 6'b100011;
 	       1: code <= 6'b100011;
@@ -63,9 +86,33 @@ module alu4_wrapper (
                14:code <= 6'b100100;
                default: code <= 6'b100100;
 	     endcase
+		end
 	  end
 	13:
 	  begin
+	   if (C == 2'b10 || C == 2'b11)
+		begin
+	     case (result[2:0])
+	       0: code <= 6'b100000;
+	       1: code <= 6'b100001;
+	       2: code <= 6'b100010;
+	       3: code <= 6'b100011;
+	       4: code <= 6'b100100;
+	       5: code <= 6'b100101;
+	       6: code <= 6'b100110;
+	       7: code <= 6'b100111;
+	       8: code <= 6'b101000;
+	       9: code <= 6'b101001;
+	       10:code <= 6'b100001;
+	       11:code <= 6'b100010;
+	       12:code <= 6'b100011;
+	       13:code <= 6'b100100;
+	       14:code <= 6'b100101;
+	       default: code <= 6'b100110;
+	     endcase
+		end
+		else
+		begin
 	     case (result)
 	       0: code <= 6'b100000;
 	       1: code <= 6'b100001;
@@ -84,6 +131,7 @@ module alu4_wrapper (
 	       14:code <= 6'b100101;
 	       default: code <= 6'b100110;
 	     endcase
+		end
 	  end
 	14: code <= 6'h21; // Table 5-3, Read Busy Flag and Address
 	// send 01 BF (Busy Flag) x x x, then 01xxxx
