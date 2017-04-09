@@ -26,7 +26,7 @@ module alu4_wrapper (
       if (pb2 == 1)
 	B = sw;
       if (pb3 == 1)
-	C = sw[2:0];
+	C = sw[1:0];
 
       count <= count + 1;
 
