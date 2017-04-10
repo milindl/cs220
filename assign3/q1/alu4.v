@@ -29,7 +29,7 @@ module alu4 (
    reg [4:0] 		      actualOut;
    assign ALUOut = actualOut;
    assign ZF = ($signed(actualOut)==0);
-   assign CF = ($signed(actualOut) > 7);
+   assign CF = ($signed(actualOut) > 7 || $signed(actualOut) < -8);
    assign SF = ($signed(actualOut) < 0);
    always @(ALUctl, A, B) //reevaluate if these change
      case (ALUctl)

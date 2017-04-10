@@ -14,9 +14,11 @@ module processor_wrapper (
    reg [2:0] 				   opcode = 3'b111;
    wire 				   sign, zero, carry;
    wire [3:0] 				   result;
+	wire [3:0]              r2;
    assign SF = sign;
    assign ZF = zero;
    assign CF = carry;
+	assign r2 = sign == 1 ? ~result + 1 : result[2:0];
    processor uut(.opcode(opcode),
 		 .inp1(inp1), .inp2(inp2),
 		 .clk(clk), .reg_w_enable(pb4),
@@ -50,7 +52,7 @@ module processor_wrapper (
 	  begin
 	     if (opcode == 3'b010 || opcode == 3'b011)
 	       begin
-		  case (result[2:0])
+		  case (r2)
 		    0: code <= 6'b100011;
 		    1: code <= 6'b100011;
 		    2: code <= 6'b100011;
@@ -95,7 +97,7 @@ module processor_wrapper (
 	  begin
 	     if (opcode == 3'b010 || opcode == 3'b011)
 	       begin
-		  case (result[2:0])
+		  case (r2)
 		    0: code <= 6'b100000;
 		    1: code <= 6'b100001;
 		    2: code <= 6'b100010;
